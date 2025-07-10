@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baby Merjem</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to bottom right, #ffe6f0, #fff0f5);
+      color: #a64d79;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(255, 105, 180, 0.2);
+    }
+
+    h1 {
+      font-size: 3em;
+      color: #d63384;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      margin-top: 0;
+    }
+
+    .age {
+      font-size: 2em;
+      margin-top: 30px;
+      color: #ff69b4;
+    }
+
+    .footer {
+      margin-top: 50px;
+      font-size: 0.9em;
+      color: #b375a6;
+    }
+
+    .hearts {
+      font-size: 1.5em;
+      margin-top: 10px;
+    }
+
+    .photos {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .photos img {
+      width: 45%;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(255, 105, 180, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>✨ Welcome to Merjem's World! ✨</h1>
+    <h2>🎀 Born on November 11, 2024</h2>
+    <p>With love from parents: <strong>Emina</strong> and <strong>Osman</strong></p>
+
+    <div class="age">
+      Merjem is <span id="ageDisplay"></span> old!
+    </div>
+
+    <div class="hearts">
+      ❤️ ❤️ ❤️
+    </div>
+
+    <div class="photos">
+      <img src="https://i.imgur.com/FAbcAXX.jpeg" alt="Merjem with Dad">
+      <img src="https://i.imgur.com/mRixW3f.jpeg" alt="Merjem with Mom">
+    </div>
+
+    <div class="footer">
+      Thank you for visiting!<br>
+      Made with love for little Merjem ✨
+    </div>
+  </div>
+
+  <script>
+    function calculateAge(birthDate) {
+      const today = new Date();
+      let years = today.getFullYear() - birthDate.getFullYear();
+      let months = today.getMonth() - birthDate.getMonth();
+      let days = today.getDate() - birthDate.getDate();
+
+      if (days < 0) {
+        months--;
+        const prevMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+        days += prevMonth.getDate();
+      }
+
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+
+      return `${years} year${years !== 1 ? 's' : ''}, ${months} month${months !== 1 ? 's' : ''}, ${days} day${days !== 1 ? 's' : ''}`;
+    }
+
+    const birthDate = new Date('2024-11-11T00:00:00');
+    document.getElementById('ageDisplay').textContent = calculateAge(birthDate);
+
+    setInterval(() => {
+      document.getElementById('ageDisplay').textContent = calculateAge(birthDate);
+    }, 60 * 1000);
+  </script>
+</body>
+</html>
